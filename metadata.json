@@ -1,0 +1,5 @@
+{
+  "name": "AI Couple Photoshoot",
+  "description": "An AI-powered application that allows users to generate stunning, studio-quality couple photographs from two uploaded face images using the Gemini Nano Banana model.",
+  "requestFramePermissions": []
+}

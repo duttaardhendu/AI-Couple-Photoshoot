@@ -1,4 +1,3 @@
-
 import { Theme } from './types';
 
 export const ASPECT_RATIOS: string[] = [
@@ -14,7 +13,7 @@ export const THEMES: Theme[] = [
   {
     id: 1,
     name: "Studio Fashion Shoot",
-    description: "Couple posing in a high-end fashion studio with soft lighting and cinematic backdrops.",
+    description: "High-end editorial fashion in a controlled studio environment.",
     prompts: [
       "A high-end fashion studio photoshoot of a couple, man in a tailored dark suit, woman in an elegant evening gown, against a charcoal gray seamless backdrop with soft, diffused key lighting.",
       "A Vogue-inspired couple's portrait in a studio. Man seated on a designer chair, woman standing behind him with a hand on his shoulder. Dramatic, moody lighting.",
@@ -30,7 +29,7 @@ export const THEMES: Theme[] = [
   {
     id: 2,
     name: "Classic Black & White",
-    description: "Man seated elegantly, woman standing behind, both in monochrome attire, studio light gradient.",
+    description: "Timeless monochrome elegance focusing on emotion and light.",
     prompts: [
       "Classic black and white portrait of a couple in a studio. Man seated, woman standing behind him with hands on his shoulders. Single light source, creating a strong gradient.",
       "A timeless black and white photo. Couple facing each other, foreheads touching. Soft, romantic lighting. Elegant formal wear.",
@@ -45,6 +44,86 @@ export const THEMES: Theme[] = [
   },
   {
     id: 3,
+    name: "Foreign Trip: Japan",
+    description: "A romantic journey through the iconic sights and culture of Japan.",
+    prompts: [
+      "A romantic couple posing directly in front of the iconic red Tokyo Tower on a clear day. Modern chic travel outfits.",
+      "A cozy photo of the couple sitting inside a warm, wooden Japanese cafe in Kyoto, drinking matcha lattes. Soft interior lighting.",
+      "The couple enjoying an authentic sushi dinner at a high-end sushi counter in Ginza. The man holding a piece of nigiri with chopsticks for the woman.",
+      "Couple wearing beautiful traditional silk Kimonos walking through the orange Torii gates of Fushimi Inari Shrine.",
+      "A breathtaking wedding photoshoot. The couple in traditional Japanese wedding attire (Shiromuku and Montsuki) standing serenely in front of a Shinto Shrine.",
+      "A majestic shot of the couple standing by Lake Kawaguchiko with the snow-capped Mount Fuji clearly visible in the background. Cherry blossoms framing the shot.",
+      "A candid shot of the couple laughing while sitting on the tatami mats of a traditional Japanese Ryokan house, wearing Yukatas.",
+      "The couple standing in the middle of the famous Shibuya Crossing in Tokyo, surrounded by the blur of the crowd and neon signs at night.",
+      "A peaceful stroll through the Arashiyama Bamboo Grove in Kyoto. The sunlight filtering through the tall bamboo stalks onto the couple."
+    ],
+  },
+  {
+    id: 4,
+    name: "Foreign Trip: Paris",
+    description: "The city of love. Monuments, cafes, and Parisian chic.",
+    prompts: [
+      "A classic romantic shot of the couple standing on the Trocadéro plaza with the Eiffel Tower towering in the background. Golden hour lighting.",
+      "The couple sitting at a small round table at a sidewalk cafe in Montmartre, eating croissants and drinking coffee. Vintage Parisian vibe.",
+      "A stylish photo of the couple posing in front of the glass pyramid at the Louvre Museum at twilight.",
+      "Walking hand-in-hand along the Seine river banks with the historic bridges and architecture in the background.",
+      "A grand shot of the couple standing in front of the Arc de Triomphe on the Champs-Élysées. Fashionable coats and scarves.",
+      "The couple sharing a macaron at a luxury patisserie shop window. Pastel colors and elegant decor.",
+      "A romantic kiss on the Pont des Arts bridge (Love Lock bridge) with the river view behind them.",
+      "Couple walking through the manicured gardens of the Palace of Versailles. Royal and opulent atmosphere.",
+      "Night shot of the couple walking down a cobblestone street in Le Marais, illuminated by warm street lamps and restaurant glows."
+    ],
+  },
+  {
+    id: 5,
+    name: "Dance Styles of the World",
+    description: "Dynamic poses showcasing 9 different popular dance styles.",
+    prompts: [
+      "The couple performing a graceful Ballet lift on a stage with a spotlight. The woman in a tutu, the man in tights.",
+      "A passionate Salsa dance moment in a dimly lit Havana-style club. Vibrant red dress and flowing motion.",
+      "A colorful Bollywood dance number. The couple in vibrant Indian costumes posing dynamically with a large group of dancers blurred in the background.",
+      "A cool Street Breakdance battle pose. The couple in urban streetwear, one doing a freeze pose, graffiti wall background.",
+      "A dramatic Tango dip in an elegant ballroom. The woman in a high-slit black dress, the man in a sharp suit. Rose in mouth.",
+      "A classic Waltz in a grand palace hall with chandeliers. Sweeping ballgown and tuxedo.",
+      "A lively Swing dance throw. Vintage 1950s outfits, polka dots and suspenders. Energetic and fun.",
+      "A fiery Flamenco pose in a Spanish courtyard. The woman in a ruffled dress clapping, the man playing a guitar nearby.",
+      "A contemporary interpretive dance pose. Neutral earth-tone clothing, emotional expression, minimalist concrete background."
+    ],
+  },
+  {
+    id: 6,
+    name: "Sports & Athletics",
+    description: "Active couple moments in gym, stadium, and court settings.",
+    prompts: [
+      "Couple at a modern gym, doing a partner workout. Matching high-end sportswear, gym equipment in background.",
+      "Action shot on a Badminton court. The couple in sportswear, rackets in hand, ready to serve. Bright stadium lighting.",
+      "Playful sparring in a Boxing ring. Wearing boxing gloves and shorts. Sweaty and intense but smiling.",
+      "Couple in white Judo Gis on a tatami mat, bowing to each other respectfully before a match.",
+      "Athletes running together on a professional red running track in a stadium. Dynamic motion blur background.",
+      "Couple high-fiving on a Tennis court after a match. wearing white tennis skirts and polos. Sun flare.",
+      "Swimming pool shot. The couple at the edge of an olympic pool, wearing swim caps and goggles, looking at the camera.",
+      "Basketball court lifestyle shot. The couple playing 1-on-1 on an urban outdoor court at sunset.",
+      "Cycling couple taking a break on a scenic mountain road. Wearing helmets and professional cycling jerseys with bikes."
+    ],
+  },
+  {
+    id: 7,
+    name: "World Culture Costumes",
+    description: "Traditional attire from 9 different cultures with iconic landmarks.",
+    prompts: [
+      "Couple wearing colorful traditional Mexican Mariachi and Folklorico dresses, standing in front of a colorful colonial building in Guanajuato.",
+      "Couple in exquisite Indian traditional wear (Saree and Sherwani) posing in front of the Taj Mahal at sunrise.",
+      "Couple in traditional Japanese Kimonos standing on a red bridge in a Japanese garden.",
+      "Couple in traditional Scottish Kilts and Highland dress, standing in front of a misty Scottish castle.",
+      "Couple in Ancient Egyptian stylized costumes standing before the Great Sphinx of Giza. Desert sands background.",
+      "Couple in traditional Spanish Matador and Flamenco attire standing in the Plaza de España in Seville.",
+      "Couple in traditional Chinese Hanfu robes standing on the Great Wall of China. Majestic mountain view.",
+      "Couple in traditional American Western Cowboy/Cowgirl attire with hats and boots, standing in Monument Valley.",
+      "Couple in elaborate Venetian Carnival costumes and masks, posing in a gondola on the canals of Venice, Italy."
+    ],
+  },
+  {
+    id: 8,
     name: "Beach Romance",
     description: "Couple at sunset beach, waves in background, barefoot, wearing pastel summer outfits.",
     prompts: [
@@ -60,7 +139,7 @@ export const THEMES: Theme[] = [
     ],
   },
   {
-    id: 4,
+    id: 9,
     name: "Traditional Indian Wedding",
     description: "Bride and groom in royal Indian attire, temple or palace background, soft bokeh lighting.",
     prompts: [
@@ -76,7 +155,7 @@ export const THEMES: Theme[] = [
     ]
   },
   {
-    id: 5,
+    id: 10,
     name: "Rainy Street Hug",
     description: "Couple under one umbrella on a rainy evening street, reflections on wet pavement, neon glow.",
     prompts: [

@@ -1,8 +1,7 @@
-
 import { GoogleGenAI, Modality } from "@google/genai";
 import { GeneratedImage } from "../types";
 
-const MAX_RETRIES = 3;
+const MAX_RETRIES = 2;
 
 const fileToGenerativePart = async (file: File) => {
     const base64EncodedDataPromise = new Promise<string>((resolve) => {
@@ -27,12 +26,27 @@ export const generateCouplePhotoshoot = async (
   const femaleImagePart = await fileToGenerativePart(femaleImageFile);
 
   const generationPromises = prompts.map(async (prompt) => {
-    const fullPrompt = `A photorealistic couple photoshoot. Theme: ${prompt}. Use the man's face from the first image provided and the woman's face from the second image provided. Faithfully reproduce the faces with 100% accuracy, ensuring natural skin tones and expressions. Blend the faces seamlessly onto the new bodies and scene. The final image should be in a ${aspectRatio} aspect ratio.`;
+    // ABSOLUTELY CRITICAL: Face Identity Engineering
+    const identityInstruction = `
+      MANDATORY REQUIREMENT: ABSOLUTE FACIAL IDENTITY PRESERVATION.
+      The generated image MUST feature the EXACT faces of the two people provided in the reference images.
+      - Man's Face: 100% identical to the first reference image. Preserve exact eye shape, nose structure, jawline, and unique skin details.
+      - Woman's Face: 100% identical to the second reference image. Preserve exact facial proportions, eyes, and unique features.
+      - NO BEAUTIFICATION DRIFT: Do not stylize or "improve" the faces. They must be recognizable as the specific individuals provided.
+      - SEAMLESS BLENDING: Integrate these exact identities into the following scene naturally.
+    `;
+
+    const fullPrompt = `${identityInstruction}
+      
+      SCENE DESCRIPTION: ${prompt}.
+      
+      TECHNICAL SPECS: Photorealistic, 8k resolution, cinematic lighting, shallow depth of field, professional photoshoot quality.
+      ASPECT RATIO: ${aspectRatio}.`;
     
     for (let i = 0; i < MAX_RETRIES; i++) {
         try {
             const response = await ai.models.generateContent({
-                model: 'gemini-2.5-flash-image',
+                model: 'gemini-3-pro-image-preview',
                 contents: {
                     parts: [
                         maleImagePart,
@@ -45,21 +59,17 @@ export const generateCouplePhotoshoot = async (
                 },
             });
 
-            const part = response.candidates?.[0]?.content?.parts?.[0];
+            const part = response.candidates?.[0]?.content?.parts?.find(p => p.inlineData);
             if (part && part.inlineData) {
                 const base64ImageBytes: string = part.inlineData.data;
                 const imageUrl = `data:${part.inlineData.mimeType};base64,${base64ImageBytes}`;
                 return { src: imageUrl, prompt: prompt };
             }
         } catch (error) {
-            console.error(`Attempt ${i + 1} failed for prompt: "${prompt}"`, error);
-            if (i === MAX_RETRIES - 1) {
-                // Return null or throw to indicate failure after all retries
-                return null;
-            }
+            console.error(`Attempt ${i + 1} failed for: "${prompt.substring(0, 30)}..."`, error);
         }
     }
-    return null; // Should not be reached if MAX_RETRIES > 0
+    return null;
   });
 
   const results = await Promise.all(generationPromises);
